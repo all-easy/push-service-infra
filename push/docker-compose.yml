@@ -3,7 +3,7 @@ services:
   # APP*****************************************
   push-service:
     container_name: push-service
-    build: .
+    image: dakotaio/push:${VERSION}
     networks:
       - postgres
       - metrics
@@ -18,8 +18,10 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - TG_HOOK_SECRET=${TG_HOOK_SECRET}
+      - TG_HOOK_URL=${TG_HOOK_URL}
       - TG_TOKEN=${TG_TOKEN}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - DB_NAME=${DB_NAME}
       - api_key=${API_KEY}
     restart: unless-stopped
 
